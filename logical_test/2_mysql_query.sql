@@ -1,10 +1,8 @@
--- Buatlah satu buah query untuk mencari nama seorang mahasiswa yang memiliki nilai mata kuliah tertinggi pada mata kuliah dengan kode “MK303”.
-
-SELECT m.nama, mk.kode, mk.nama, MAX(nilai) AS nilai
-FROM mahasiswa m
-INNER JOIN nilai n ON m.nim = n.nim
-INNER JOIN mata_kuliah mk ON n.kode_mk = mk.kode
-WHERE mk.kode = 'MK303'
-GROUP BY m.nama, mk.kode, mk.nama
+SELECT m.mhs_nama, mk.mk_kode, mk.mk_nama, MAX(nilai) AS nilai
+FROM tb_mahasiswa m
+         INNER JOIN tb_mahasiswa_nilai n ON m.mhs_id = n.mhs_id
+         INNER JOIN tb_matakuliah mk ON n.mk_id = mk.mk_id
+WHERE mk.mk_kode = 'MK303'
+GROUP BY m.mhs_nama, mk.mk_kode, mk.mk_nama
 ORDER BY nilai DESC
-LIMIT 1;
+    LIMIT 1;
